@@ -1,0 +1,2 @@
+# Skill_Bridge
+SkillBridge is a web-based skill exchange platform that connects people who want to learn new skills with people who are willing to teach them. Users can share their expertise, discover learning partners, and exchange skills through a simple and interactive platform.  Built using Java, JSP, Servlets, HTML, CSS, JavaScript, and Oracle Database, SkillBridge includes user authentication, skill management, partner matching, exchange requests, email notifications, and password recovery.
