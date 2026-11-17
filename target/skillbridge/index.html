@@ -1,0 +1,705 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="description"
+          content="SkillBridge connects people who want to exchange knowledge, teach skills and learn from one another.">
+
+    <title>SkillBridge | Knowledge Goes Both Ways</title>
+
+    <link rel="stylesheet" href="css/style.css">
+
+    <style>
+        /* =====================================
+           HOMEPAGE — PROFESSIONAL LAYOUT
+        ===================================== */
+
+        .home-hero {
+            padding: 85px 8%;
+            background: #f5f7fa;
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        .home-hero-inner {
+            max-width: 1200px;
+            margin: auto;
+            display: grid;
+            grid-template-columns: 1.15fr 0.85fr;
+            align-items: center;
+            gap: 65px;
+        }
+
+        .home-hero-content {
+            max-width: 650px;
+        }
+
+        .home-eyebrow {
+            display: inline-flex;
+            align-items: center;
+            gap: 9px;
+            color: #3567a5;
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            margin-bottom: 23px;
+        }
+
+        .home-eyebrow::before {
+            content: "";
+            width: 25px;
+            height: 2px;
+            background: #3567a5;
+        }
+
+        .home-hero h1 {
+            color: #10243e;
+            font-size: clamp(39px, 5vw, 61px);
+            line-height: 1.13;
+            letter-spacing: -2px;
+            font-weight: 750;
+            margin-bottom: 24px;
+        }
+
+        .home-hero h1 span {
+            color: #3567a5;
+        }
+
+        .home-hero-description {
+            max-width: 530px;
+            color: #64748b;
+            font-size: 16px;
+            line-height: 1.9;
+        }
+
+        .home-hero-actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 13px;
+            margin-top: 32px;
+        }
+
+        .home-hero-note {
+            margin-top: 25px;
+            color: #8491a2;
+            font-size: 12px;
+        }
+
+        /* Hero visual */
+
+        .home-visual {
+            position: relative;
+            min-height: 370px;
+            background: #183153;
+            border-radius: 12px;
+            padding: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .home-visual::before {
+            content: "";
+            position: absolute;
+            width: 260px;
+            height: 260px;
+            border: 1px solid rgba(255,255,255,0.13);
+            border-radius: 50%;
+            top: -110px;
+            right: -80px;
+        }
+
+        .home-visual::after {
+            content: "";
+            position: absolute;
+            width: 210px;
+            height: 210px;
+            border: 1px solid rgba(255,255,255,0.13);
+            border-radius: 50%;
+            bottom: -100px;
+            left: -65px;
+        }
+
+        .exchange-panel {
+            position: relative;
+            z-index: 1;
+            width: 100%;
+            max-width: 370px;
+        }
+
+        .exchange-panel-heading {
+            color: #d9e5f2;
+            font-size: 11px;
+            letter-spacing: 1.5px;
+            font-weight: 700;
+            text-transform: uppercase;
+            margin-bottom: 19px;
+        }
+
+        .exchange-person {
+            background: #ffffff;
+            padding: 18px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            margin-bottom: 12px;
+        }
+
+        .exchange-avatar {
+            width: 43px;
+            height: 43px;
+            flex-shrink: 0;
+            background: #eaf0f7;
+            color: #183153;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            font-size: 15px;
+            font-weight: 750;
+        }
+
+        .exchange-person h3 {
+            color: #183153;
+            font-size: 14px;
+            margin-bottom: 3px;
+        }
+
+        .exchange-person p {
+            color: #64748b;
+            font-size: 12px;
+        }
+
+        .exchange-divider {
+            text-align: center;
+            color: #d9e5f2;
+            font-size: 12px;
+            font-weight: 650;
+            letter-spacing: 1px;
+            padding: 3px 0 14px;
+        }
+
+        .exchange-footer {
+            color: #d9e5f2;
+            font-size: 12px;
+            text-align: center;
+            margin-top: 18px;
+        }
+
+        /* Introduction */
+
+        .home-intro {
+            max-width: 1200px;
+            margin: auto;
+            padding: 70px 8% 35px;
+            text-align: center;
+        }
+
+        .home-section-label {
+            color: #3567a5;
+            font-size: 11px;
+            font-weight: 750;
+            letter-spacing: 1.7px;
+            text-transform: uppercase;
+            margin-bottom: 12px;
+        }
+
+        .home-intro h2,
+        .home-process h2 {
+            color: #10243e;
+            font-size: 31px;
+            letter-spacing: -0.8px;
+            margin-bottom: 13px;
+        }
+
+        .home-intro p {
+            max-width: 620px;
+            margin: auto;
+            color: #64748b;
+            font-size: 14px;
+            line-height: 1.8;
+        }
+
+        /* Process section */
+
+        .home-process {
+            padding: 35px 8% 85px;
+            background: #ffffff;
+        }
+
+        .home-process-inner {
+            max-width: 1200px;
+            margin: auto;
+        }
+
+        .home-process-heading {
+            text-align: center;
+            margin-bottom: 38px;
+        }
+
+        .home-process-heading > p:last-child {
+            color: #64748b;
+            font-size: 14px;
+        }
+
+        .home-steps {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 20px;
+        }
+
+        .home-step {
+            padding: 28px;
+            background: #ffffff;
+            border: 1px solid #e2e8f0;
+            border-radius: 10px;
+            transition: border-color 0.2s, transform 0.2s;
+        }
+
+        .home-step:hover {
+            border-color: #b9c9dc;
+            transform: translateY(-3px);
+        }
+
+        .home-step-number {
+            color: #3567a5;
+            font-size: 12px;
+            font-weight: 750;
+            letter-spacing: 1.2px;
+            margin-bottom: 21px;
+        }
+
+        .home-step h3 {
+            color: #183153;
+            font-size: 17px;
+            margin-bottom: 10px;
+        }
+
+        .home-step p {
+            color: #64748b;
+            font-size: 13px;
+            line-height: 1.8;
+        }
+
+        /* Bottom CTA */
+
+        .home-cta {
+            padding: 65px 8%;
+            background: #edf2f8;
+            text-align: center;
+            border-top: 1px solid #e2e8f0;
+        }
+
+        .home-cta h2 {
+            color: #10243e;
+            font-size: 30px;
+            letter-spacing: -0.7px;
+            margin-bottom: 12px;
+        }
+
+        .home-cta p {
+            color: #64748b;
+            font-size: 14px;
+            margin-bottom: 25px;
+        }
+
+        .home-cta .button {
+            margin: 0 4px;
+        }
+
+        /* Footer */
+
+        .home-footer {
+            background: #10243e;
+            color: #d9e5f2;
+            padding: 32px 8%;
+        }
+
+        .home-footer-inner {
+            max-width: 1200px;
+            margin: auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .home-footer .logo {
+            color: #ffffff;
+            font-size: 22px;
+        }
+
+        .home-footer p {
+            color: #aebdd0;
+            font-size: 12px;
+        }
+
+        .home-footer-links {
+            display: flex;
+            gap: 20px;
+        }
+
+        .home-footer-links a {
+            color: #d9e5f2;
+            text-decoration: none;
+            font-size: 12px;
+        }
+
+        .home-footer-links a:hover {
+            color: #ffffff;
+        }
+
+        /* Responsive homepage */
+
+        @media (max-width: 850px) {
+
+            .home-hero {
+                padding: 65px 6%;
+            }
+
+            .home-hero-inner {
+                grid-template-columns: 1fr;
+                gap: 38px;
+            }
+
+            .home-visual {
+                min-height: 330px;
+            }
+
+            .home-steps {
+                grid-template-columns: 1fr;
+            }
+
+            .home-intro,
+            .home-process {
+                padding-left: 6%;
+                padding-right: 6%;
+            }
+        }
+
+        @media (max-width: 550px) {
+
+            .home-hero {
+                padding: 55px 5%;
+            }
+
+            .home-hero h1 {
+                font-size: 39px;
+                letter-spacing: -1.3px;
+            }
+
+            .home-hero-description {
+                font-size: 14px;
+            }
+
+            .home-visual {
+                min-height: 310px;
+                padding: 20px;
+            }
+
+            .home-intro h2,
+            .home-process h2,
+            .home-cta h2 {
+                font-size: 25px;
+            }
+
+            .home-cta {
+                padding: 50px 5%;
+            }
+
+            .home-footer-inner {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .home-footer-links {
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- NAVIGATION -->
+
+    <header class="navbar">
+
+        <a href="index.html" class="logo">
+            SkillBridge
+        </a>
+
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="login.html">Login</a>
+            <a href="register.html" class="nav-button">
+                Get Started
+            </a>
+        </nav>
+
+    </header>
+
+
+    <main>
+
+        <!-- HERO SECTION -->
+
+        <section class="home-hero">
+
+            <div class="home-hero-inner">
+
+                <div class="home-hero-content">
+
+                    <p class="home-eyebrow">
+                        A community built on shared knowledge
+                    </p>
+
+                    <h1>
+                        Knowledge is better when it's
+                        <span>shared.</span>
+                    </h1>
+
+                    <p class="home-hero-description">
+                        Everyone has something to teach and something
+                        to learn. SkillBridge helps you connect with
+                        people who can exchange knowledge and grow
+                        together.
+                    </p>
+
+                    <div class="home-hero-actions">
+
+                        <a href="register.html"
+                           class="button primary-button">
+                            Create Your Account
+                        </a>
+
+                        <a href="login.html"
+                           class="button secondary-button">
+                            Sign In
+                        </a>
+
+                    </div>
+
+                    <p class="home-hero-note">
+                        Share what you know. Discover what you don't.
+                    </p>
+
+                </div>
+
+
+                <!-- VISUAL EXAMPLE OF SKILL EXCHANGE -->
+
+                <div class="home-visual">
+
+                    <div class="exchange-panel">
+
+                        <p class="exchange-panel-heading">
+                            How knowledge moves
+                        </p>
+
+                        <div class="exchange-person">
+
+                            <div class="exchange-avatar">
+                                A
+                            </div>
+
+                            <div>
+                                <h3>Person A</h3>
+                                <p>Can teach: Web Development</p>
+                            </div>
+
+                        </div>
+
+                        <div class="exchange-divider">
+                            KNOWLEDGE EXCHANGE
+                        </div>
+
+                        <div class="exchange-person">
+
+                            <div class="exchange-avatar">
+                                B
+                            </div>
+
+                            <div>
+                                <h3>Person B</h3>
+                                <p>Can teach: Graphic Design</p>
+                            </div>
+
+                        </div>
+
+                        <p class="exchange-footer">
+                            Two people. Two skills. Shared growth.
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- INTRODUCTION -->
+
+        <section class="home-intro">
+
+            <p class="home-section-label">
+                The idea behind SkillBridge
+            </p>
+
+            <h2>
+                Learning should be a two-way street.
+            </h2>
+
+            <p>
+                Traditional learning often focuses on one person
+                teaching and another learning. SkillBridge makes
+                knowledge exchange mutual. Share your strengths,
+                discover new opportunities and learn from one another.
+            </p>
+
+        </section>
+
+
+        <!-- HOW IT WORKS -->
+
+        <section class="home-process">
+
+            <div class="home-process-inner">
+
+                <div class="home-process-heading">
+
+                    <p class="home-section-label">
+                        Simple by design
+                    </p>
+
+                    <h2>
+                        How SkillBridge Works
+                    </h2>
+
+                    <p>
+                        Three simple steps to start exchanging knowledge.
+                    </p>
+
+                </div>
+
+
+                <div class="home-steps">
+
+                    <article class="home-step">
+
+                        <p class="home-step-number">
+                            STEP 01
+                        </p>
+
+                        <h3>Share Your Skills</h3>
+
+                        <p>
+                            Add the skills you can teach and the skills
+                            you want to learn. Build your learning
+                            profile around your interests.
+                        </p>
+
+                    </article>
+
+
+                    <article class="home-step">
+
+                        <p class="home-step-number">
+                            STEP 02
+                        </p>
+
+                        <h3>Find Your Match</h3>
+
+                        <p>
+                            Discover people who have the knowledge
+                            you're looking for and identify opportunities
+                            for a meaningful skill exchange.
+                        </p>
+
+                    </article>
+
+
+                    <article class="home-step">
+
+                        <p class="home-step-number">
+                            STEP 03
+                        </p>
+
+                        <h3>Exchange Knowledge</h3>
+
+                        <p>
+                            Send an exchange request, connect with
+                            another learner and start growing together.
+                        </p>
+
+                    </article>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- CALL TO ACTION -->
+
+        <section class="home-cta">
+
+            <h2>
+                Your next skill starts with a connection.
+            </h2>
+
+            <p>
+                Join SkillBridge and turn what you know into
+                an opportunity for someone else.
+            </p>
+
+            <a href="register.html"
+               class="button primary-button">
+                Get Started
+            </a>
+
+            <a href="login.html"
+               class="button secondary-button">
+                Already a Member?
+            </a>
+
+        </section>
+
+    </main>
+
+
+    <!-- FOOTER -->
+
+    <footer class="home-footer">
+
+        <div class="home-footer-inner">
+
+            <a href="index.html" class="logo">
+                SkillBridge
+            </a>
+
+            <p>
+                &copy; 2026 SkillBridge. Learn Together. Grow Together.
+            </p>
+
+            <div class="home-footer-links">
+                <a href="index.html">Home</a>
+                <a href="login.html">Login</a>
+                <a href="register.html">Register</a>
+            </div>
+
+        </div>
+
+    </footer>
+
+</body>
+</html>

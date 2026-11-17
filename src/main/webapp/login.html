@@ -1,0 +1,641 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Login | SkillBridge</title>
+
+    <link rel="stylesheet" href="css/style.css">
+
+    <style>
+        .login-page {
+            min-height: calc(100vh - 140px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 55px 6%;
+            background: #f5f7fa;
+        }
+
+        .login-layout {
+            width: 100%;
+            max-width: 1000px;
+            min-height: 540px;
+            display: grid;
+            grid-template-columns: 0.9fr 1.1fr;
+            background: #ffffff;
+            border: 1px solid #e2e8f0;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 8px 30px rgba(15, 35, 60, 0.06);
+        }
+
+        /* LEFT PANEL */
+
+        .login-info {
+            background: #183153;
+            color: #ffffff;
+            padding: 55px 42px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .login-info::before {
+            content: "";
+            position: absolute;
+            width: 280px;
+            height: 280px;
+            border: 1px solid rgba(255,255,255,0.12);
+            border-radius: 50%;
+            top: -130px;
+            right: -130px;
+        }
+
+        .login-info::after {
+            content: "";
+            position: absolute;
+            width: 220px;
+            height: 220px;
+            border: 1px solid rgba(255,255,255,0.12);
+            border-radius: 50%;
+            bottom: -110px;
+            left: -110px;
+        }
+
+        .login-info-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .login-info-label {
+            color: #b8cce4;
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 1.6px;
+            text-transform: uppercase;
+            margin-bottom: 22px;
+        }
+
+        .login-info h1 {
+            font-size: 35px;
+            line-height: 1.25;
+            letter-spacing: -1px;
+            margin-bottom: 20px;
+        }
+
+        .login-info h1 span {
+            color: #a9c8ed;
+        }
+
+        .login-info-description {
+            color: #d0dbea;
+            font-size: 14px;
+            line-height: 1.9;
+        }
+
+        .login-benefits {
+            margin-top: 35px;
+        }
+
+        .login-benefit {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 17px;
+            color: #e0e9f4;
+            font-size: 13px;
+        }
+
+        .login-check {
+            width: 24px;
+            height: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.13);
+            color: #ffffff;
+            font-size: 12px;
+            flex-shrink: 0;
+        }
+
+        .login-info-footer {
+            position: relative;
+            z-index: 1;
+            color: #aebdd0;
+            font-size: 11px;
+            margin-top: 35px;
+        }
+
+        /* RIGHT PANEL */
+
+        .login-form-panel {
+            padding: 55px 60px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .login-form-heading {
+            margin-bottom: 30px;
+        }
+
+        .login-form-heading h2 {
+            color: #10243e;
+            font-size: 29px;
+            letter-spacing: -0.8px;
+            margin-bottom: 9px;
+        }
+
+        .login-form-heading p {
+            color: #64748b;
+            font-size: 13px;
+            line-height: 1.7;
+        }
+
+        .login-form-panel .form-group {
+            margin-bottom: 21px;
+        }
+
+        .login-form-panel label {
+            display: block;
+            color: #334155;
+            font-size: 13px;
+            font-weight: 650;
+            margin-bottom: 8px;
+        }
+
+        .login-form-panel input {
+            width: 100%;
+            box-sizing: border-box;
+            padding: 13px 14px;
+            border: 1px solid #dbe3ec;
+            border-radius: 7px;
+            background: #ffffff;
+            color: #172638;
+            font-size: 14px;
+            outline: none;
+            transition: border-color 0.2s, box-shadow 0.2s;
+        }
+
+        .login-form-panel input:focus {
+            border-color: #3567a5;
+            box-shadow: 0 0 0 3px rgba(53, 103, 165, 0.10);
+        }
+
+        .login-form-panel input::placeholder {
+            color: #a0acba;
+        }
+
+        .login-form-panel .form-submit {
+            width: 100%;
+            margin-top: 8px;
+            padding: 14px;
+            font-size: 14px;
+            cursor: pointer;
+        }
+
+        .login-form-panel .form-submit:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+        }
+
+        .login-form-panel .form-footer {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 13px;
+            color: #64748b;
+        }
+
+        .login-form-panel .form-footer a {
+            color: #3567a5;
+            font-weight: 650;
+            text-decoration: none;
+        }
+
+        .login-form-panel .form-footer a:hover {
+            text-decoration: underline;
+        }
+
+        #login-message {
+            font-size: 13px;
+            line-height: 1.7;
+            margin-bottom: 18px;
+        }
+
+        #lockout-countdown {
+            margin-top: 8px;
+            color: #c24141;
+        }
+
+        /* RESPONSIVE */
+
+        @media (max-width: 750px) {
+
+            .login-layout {
+                max-width: 520px;
+                grid-template-columns: 1fr;
+            }
+
+            .login-info {
+                padding: 35px 35px;
+            }
+
+            .login-info h1 {
+                font-size: 29px;
+            }
+
+            .login-benefits {
+                margin-top: 25px;
+            }
+
+            .login-info-footer {
+                margin-top: 15px;
+            }
+
+            .login-form-panel {
+                padding: 40px 35px;
+            }
+        }
+
+        @media (max-width: 480px) {
+
+            .login-page {
+                padding: 30px 5%;
+            }
+
+            .login-info {
+                padding: 30px 25px;
+            }
+
+            .login-form-panel {
+                padding: 32px 25px;
+            }
+
+            .login-form-heading h2 {
+                font-size: 25px;
+            }
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <!-- NAVIGATION -->
+
+    <header class="navbar">
+
+        <a href="index.html" class="logo">SkillBridge</a>
+
+        <nav>
+            <a href="index.html">Home</a>
+
+            <a href="register.html" class="nav-button">
+                Create Account
+            </a>
+        </nav>
+
+    </header>
+
+
+    <!-- LOGIN PAGE -->
+
+    <main class="login-page">
+
+        <div class="login-layout">
+
+            <!-- LEFT INFORMATION PANEL -->
+
+            <section class="login-info">
+
+                <div class="login-info-content">
+
+                    <p class="login-info-label">
+                        Welcome to SkillBridge
+                    </p>
+
+                    <h1>
+                        Your learning journey
+                        <span>continues here.</span>
+                    </h1>
+
+                    <p class="login-info-description">
+                        Connect with people, exchange knowledge
+                        and discover new opportunities to develop
+                        your skills.
+                    </p>
+
+                    <div class="login-benefits">
+
+                        <div class="login-benefit">
+                            <span class="login-check">✓</span>
+                            <span>Discover people with shared interests</span>
+                        </div>
+
+                        <div class="login-benefit">
+                            <span class="login-check">✓</span>
+                            <span>Teach skills you already know</span>
+                        </div>
+
+                        <div class="login-benefit">
+                            <span class="login-check">✓</span>
+                            <span>Learn something new through exchange</span>
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <p class="login-info-footer">
+                    Learn Together. Grow Together.
+                </p>
+
+            </section>
+
+
+            <!-- RIGHT LOGIN FORM -->
+
+            <section class="login-form-panel">
+
+                <div class="login-form-heading">
+
+                    <p class="home-section-label">
+                        Member Access
+                    </p>
+
+                    <h2>Welcome Back</h2>
+
+                    <p>
+                        Enter your account details to continue.
+                    </p>
+
+                </div>
+
+
+                <p
+                    id="login-message"
+                    class="error-message"
+                    role="alert"
+                    aria-live="polite">
+                </p>
+
+
+                <form action="login" method="post" id="login-form">
+
+                    <div class="form-group">
+
+                        <label for="email">
+                            Email Address
+                        </label>
+
+                        <input
+                            type="email"
+                            id="email"
+                            name="email"
+                            placeholder="Enter your email"
+                            maxlength="254"
+                            autocomplete="email"
+                            required>
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label for="password">
+                            Password
+                        </label>
+
+                        <input
+                            type="password"
+                            id="password"
+                            name="password"
+                            placeholder="Enter your password"
+                            autocomplete="current-password"
+                            required>
+
+                    </div>
+
+
+                    <button
+                        type="submit"
+                        class="button primary-button form-submit"
+                        id="login-button">
+
+                        Sign In
+
+                    </button>
+
+                </form>
+
+
+                <p class="form-footer">
+                    <a href="forgot-password">
+                        Forgot Password?
+                    </a>
+                </p>
+
+
+                <p class="form-footer">
+                    Don't have an account?
+
+                    <a href="register.html">
+                        Create an account
+                    </a>
+                </p>
+
+            </section>
+
+        </div>
+
+    </main>
+
+
+    <!-- FOOTER -->
+
+    <footer>
+
+        <p>
+            &copy; 2026 SkillBridge. Learn Together. Grow Together.
+        </p>
+
+    </footer>
+
+
+    <!-- EXISTING LOGIN FUNCTIONALITY -->
+
+    <script>
+
+        const params = new URLSearchParams(
+            window.location.search
+        );
+
+        const message = document.getElementById(
+            "login-message"
+        );
+
+        const loginForm = document.getElementById(
+            "login-form"
+        );
+
+        const loginButton = document.getElementById(
+            "login-button"
+        );
+
+        function showError(text) {
+
+            message.textContent = text;
+
+            message.classList.remove("success-message");
+            message.classList.add("error-message");
+
+        }
+
+        function showSuccess(text) {
+
+            message.textContent = text;
+
+            message.classList.remove("error-message");
+            message.classList.add("success-message");
+
+        }
+
+
+        // Invalid email or password
+
+        if (params.get("error") === "invalid") {
+
+            showError(
+                "Invalid email or password. Please try again."
+            );
+
+            const remaining = params.get("remaining");
+
+            if (remaining !== null) {
+
+                const attempts = Number(remaining);
+
+                if (Number.isInteger(attempts)
+                        && attempts >= 1 && attempts <= 4) {
+
+                    message.textContent +=
+                        " You have " + attempts
+                        + " attempt(s) remaining before temporary lockout.";
+                }
+            }
+
+        }
+
+
+        // Empty fields
+
+        else if (params.get("error") === "empty") {
+
+            showError(
+                "Please enter your email and password."
+            );
+
+        }
+
+
+        // Temporary account lockout
+
+        else if (params.get("error") === "locked") {
+
+            showError(
+                "Too many failed login attempts. Please wait before trying again."
+            );
+
+            const until = Number(params.get("until"));
+
+            if (Number.isFinite(until) && until > Date.now()) {
+
+                const countdown = document.createElement("p");
+
+                countdown.id = "lockout-countdown";
+                countdown.setAttribute("role", "timer");
+                countdown.style.fontWeight = "bold";
+
+                message.appendChild(countdown);
+
+                loginButton.disabled = true;
+
+                let timer;
+
+                function updateCountdown() {
+
+                    const difference = until - Date.now();
+
+                    if (difference <= 0) {
+
+                        countdown.textContent =
+                            "Lockout period has ended. You can try logging in again.";
+
+                        loginButton.disabled = false;
+
+                        clearInterval(timer);
+
+                        return;
+                    }
+
+                    const totalSeconds =
+                        Math.ceil(difference / 1000);
+
+                    const minutes =
+                        Math.floor(totalSeconds / 60);
+
+                    const seconds =
+                        totalSeconds % 60;
+
+                    countdown.textContent =
+                        "Time remaining: "
+                        + minutes + "m "
+                        + seconds + "s";
+
+                }
+
+                updateCountdown();
+
+                timer = setInterval(
+                    updateCountdown,
+                    1000
+                );
+
+            }
+
+        }
+
+
+        // Registration success
+
+        if (params.get("registered") === "true") {
+
+            showSuccess(
+                "Registration successful! Please log in."
+            );
+
+        }
+
+
+        // Password reset success
+
+        else if (params.get("reset") === "success") {
+
+            showSuccess(
+                "Password reset successful! Please log in with your new password."
+            );
+
+        }
+
+    </script>
+
+</body>
+
+</html>

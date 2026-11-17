@@ -1,0 +1,501 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Create Account | SkillBridge</title>
+
+    <link rel="stylesheet" href="css/style.css">
+
+    <style>
+
+        .register-page {
+            min-height: calc(100vh - 140px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 50px 6%;
+            background: #f5f7fa;
+        }
+
+        .register-layout {
+            width: 100%;
+            max-width: 1050px;
+            display: grid;
+            grid-template-columns: 0.85fr 1.15fr;
+            background: #ffffff;
+            border: 1px solid #e2e8f0;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 8px 30px rgba(15, 35, 60, 0.06);
+        }
+
+        /* LEFT PANEL */
+
+        .register-info {
+            background: #183153;
+            color: #ffffff;
+            padding: 55px 42px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .register-info::before {
+            content: "";
+            position: absolute;
+            width: 280px;
+            height: 280px;
+            border: 1px solid rgba(255,255,255,0.12);
+            border-radius: 50%;
+            top: -130px;
+            right: -130px;
+        }
+
+        .register-info::after {
+            content: "";
+            position: absolute;
+            width: 220px;
+            height: 220px;
+            border: 1px solid rgba(255,255,255,0.12);
+            border-radius: 50%;
+            bottom: -110px;
+            left: -110px;
+        }
+
+        .register-info-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .register-info-label {
+            color: #b8cce4;
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 1.6px;
+            text-transform: uppercase;
+            margin-bottom: 22px;
+        }
+
+        .register-info h1 {
+            font-size: 35px;
+            line-height: 1.25;
+            letter-spacing: -1px;
+            margin-bottom: 20px;
+        }
+
+        .register-info h1 span {
+            color: #a9c8ed;
+        }
+
+        .register-info-description {
+            color: #d0dbea;
+            font-size: 14px;
+            line-height: 1.9;
+        }
+
+        .register-benefits {
+            margin-top: 35px;
+        }
+
+        .register-benefit {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 17px;
+            color: #e0e9f4;
+            font-size: 13px;
+        }
+
+        .register-check {
+            width: 24px;
+            height: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.13);
+            color: #ffffff;
+            font-size: 12px;
+            flex-shrink: 0;
+        }
+
+        .register-info-footer {
+            position: relative;
+            z-index: 1;
+            color: #aebdd0;
+            font-size: 11px;
+            margin-top: 35px;
+        }
+
+        /* RIGHT FORM PANEL */
+
+        .register-form-panel {
+            padding: 45px 60px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .register-form-heading {
+            margin-bottom: 27px;
+        }
+
+        .register-form-heading h2 {
+            color: #10243e;
+            font-size: 29px;
+            letter-spacing: -0.8px;
+            margin-bottom: 9px;
+        }
+
+        .register-form-heading p {
+            color: #64748b;
+            font-size: 13px;
+            line-height: 1.7;
+        }
+
+        .register-form-panel .form-group {
+            margin-bottom: 18px;
+        }
+
+        .register-form-panel label {
+            display: block;
+            color: #334155;
+            font-size: 13px;
+            font-weight: 650;
+            margin-bottom: 8px;
+        }
+
+        .register-form-panel input,
+        .register-form-panel textarea {
+            width: 100%;
+            box-sizing: border-box;
+            padding: 12px 14px;
+            border: 1px solid #dbe3ec;
+            border-radius: 7px;
+            background: #ffffff;
+            color: #172638;
+            font-size: 14px;
+            font-family: inherit;
+            outline: none;
+            transition: border-color 0.2s, box-shadow 0.2s;
+        }
+
+        .register-form-panel input:focus,
+        .register-form-panel textarea:focus {
+            border-color: #3567a5;
+            box-shadow: 0 0 0 3px rgba(53, 103, 165, 0.10);
+        }
+
+        .register-form-panel input::placeholder,
+        .register-form-panel textarea::placeholder {
+            color: #a0acba;
+        }
+
+        .register-form-panel textarea {
+            resize: vertical;
+            min-height: 85px;
+        }
+
+        .register-form-panel .form-submit {
+            width: 100%;
+            margin-top: 7px;
+            padding: 14px;
+            font-size: 14px;
+            cursor: pointer;
+        }
+
+        .register-form-panel .form-footer {
+            text-align: center;
+            margin-top: 22px;
+            font-size: 13px;
+            color: #64748b;
+        }
+
+        .register-form-panel .form-footer a {
+            color: #3567a5;
+            font-weight: 650;
+            text-decoration: none;
+        }
+
+        .register-form-panel .form-footer a:hover {
+            text-decoration: underline;
+        }
+
+        .register-password-note {
+            display: block;
+            color: #8491a2;
+            font-size: 11px;
+            margin-top: 6px;
+        }
+
+        /* RESPONSIVE */
+
+        @media (max-width: 800px) {
+
+            .register-layout {
+                max-width: 560px;
+                grid-template-columns: 1fr;
+            }
+
+            .register-info {
+                padding: 35px;
+            }
+
+            .register-info h1 {
+                font-size: 29px;
+            }
+
+            .register-benefits {
+                margin-top: 25px;
+            }
+
+            .register-info-footer {
+                margin-top: 15px;
+            }
+
+            .register-form-panel {
+                padding: 40px 35px;
+            }
+        }
+
+        @media (max-width: 480px) {
+
+            .register-page {
+                padding: 30px 5%;
+            }
+
+            .register-info {
+                padding: 30px 25px;
+            }
+
+            .register-form-panel {
+                padding: 32px 25px;
+            }
+
+            .register-form-heading h2 {
+                font-size: 25px;
+            }
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+    <!-- NAVIGATION -->
+
+    <header class="navbar">
+
+        <a href="index.html" class="logo">
+            SkillBridge
+        </a>
+
+        <nav>
+            <a href="index.html">Home</a>
+
+            <a href="login.html">
+                Login
+            </a>
+        </nav>
+
+    </header>
+
+
+    <!-- REGISTRATION PAGE -->
+
+    <main class="register-page">
+
+        <div class="register-layout">
+
+            <!-- LEFT INFORMATION PANEL -->
+
+            <section class="register-info">
+
+                <div class="register-info-content">
+
+                    <p class="register-info-label">
+                        Become a part of SkillBridge
+                    </p>
+
+                    <h1>
+                        Everyone has something
+                        <span>worth sharing.</span>
+                    </h1>
+
+                    <p class="register-info-description">
+                        Create your account and connect with people
+                        who want to exchange knowledge, develop
+                        abilities and learn together.
+                    </p>
+
+                    <div class="register-benefits">
+
+                        <div class="register-benefit">
+                            <span class="register-check">✓</span>
+                            <span>Share the skills you already have</span>
+                        </div>
+
+                        <div class="register-benefit">
+                            <span class="register-check">✓</span>
+                            <span>Discover skills you want to learn</span>
+                        </div>
+
+                        <div class="register-benefit">
+                            <span class="register-check">✓</span>
+                            <span>Connect through mutual learning</span>
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <p class="register-info-footer">
+                    Learn Together. Grow Together.
+                </p>
+
+            </section>
+
+
+            <!-- RIGHT REGISTRATION FORM -->
+
+            <section class="register-form-panel">
+
+                <div class="register-form-heading">
+
+                    <p class="home-section-label">
+                        Get Started
+                    </p>
+
+                    <h2>Create Your Account</h2>
+
+                    <p>
+                        Fill in your details to join the SkillBridge community.
+                    </p>
+
+                </div>
+
+
+                <form action="register" method="post">
+
+                    <div class="form-group">
+
+                        <label for="fullName">
+                            Full Name
+                        </label>
+
+                        <input
+                            type="text"
+                            id="fullName"
+                            name="fullName"
+                            placeholder="Enter your full name"
+                            maxlength="100"
+                            autocomplete="name"
+                            required>
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label for="email">
+                            Email Address
+                        </label>
+
+                        <input
+                            type="email"
+                            id="email"
+                            name="email"
+                            placeholder="Enter your email"
+                            maxlength="254"
+                            autocomplete="email"
+                            required>
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label for="password">
+                            Password
+                        </label>
+
+                        <input
+                            type="password"
+                            id="password"
+                            name="password"
+                            placeholder="Create a password"
+                            minlength="8"
+                            autocomplete="new-password"
+                            required>
+
+                        <span class="register-password-note">
+                            Password must contain at least 8 characters.
+                        </span>
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label for="bio">
+                            About You
+                        </label>
+
+                        <textarea
+                            id="bio"
+                            name="bio"
+                            rows="3"
+                            maxlength="500"
+                            placeholder="Tell us about your interests and skills"></textarea>
+
+                    </div>
+
+
+                    <button
+                        type="submit"
+                        class="button primary-button form-submit">
+
+                        Create Account
+
+                    </button>
+
+                </form>
+
+
+                <p class="form-footer">
+
+                    Already have an account?
+
+                    <a href="login.html">
+                        Sign in
+                    </a>
+
+                </p>
+
+            </section>
+
+        </div>
+
+    </main>
+
+
+    <!-- FOOTER -->
+
+    <footer>
+
+        <p>
+            &copy; 2026 SkillBridge. Learn Together. Grow Together.
+        </p>
+
+    </footer>
+
+</body>
+
+</html>
