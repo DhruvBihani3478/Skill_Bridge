@@ -33,13 +33,14 @@ public class EmailService {
         String resendKey = System.getenv("RESEND_API_KEY");
 
         if (resendKey != null && !resendKey.isBlank()) {
+            System.out.println("[EmailService] Provider selected: Resend");
             sendWithResend(recipient, subject, body, resendKey);
         } else {
+            System.out.println("[EmailService] Provider selected: Gmail SMTP");
             sendWithGmail(recipient, subject, body);
         }
     }
 
-    // Used on Render.
     private static void sendWithResend(
             String recipient,
             String subject,
@@ -69,6 +70,11 @@ public class EmailService {
                         HttpResponse.BodyHandlers.ofString()
                 );
 
+        System.out.println(
+                "[EmailService] Resend HTTP status: "
+                + response.statusCode()
+        );
+
         if (response.statusCode() < 200
                 || response.statusCode() >= 300) {
 
@@ -80,7 +86,6 @@ public class EmailService {
         }
     }
 
-    // Used during local development.
     private static void sendWithGmail(
             String recipient,
             String subject,
@@ -136,7 +141,11 @@ public class EmailService {
         message.setSubject(subject, "UTF-8");
         message.setText(body, "UTF-8");
 
+        System.out.println("[EmailService] Connecting to Gmail SMTP...");
+
         Transport.send(message);
+
+        System.out.println("[EmailService] Gmail accepted the message.");
     }
 
     private static String escapeJson(String value) {
@@ -149,31 +158,24 @@ public class EmailService {
                 case '"':
                     escaped.append("\\\"");
                     break;
-
                 case '\\':
                     escaped.append("\\\\");
                     break;
-
                 case '\b':
                     escaped.append("\\b");
                     break;
-
                 case '\f':
                     escaped.append("\\f");
                     break;
-
                 case '\n':
                     escaped.append("\\n");
                     break;
-
                 case '\r':
                     escaped.append("\\r");
                     break;
-
                 case '\t':
                     escaped.append("\\t");
                     break;
-
                 default:
                     if (c < 0x20) {
                         escaped.append(String.format("\\u%04x", (int) c));
@@ -186,4 +188,3 @@ public class EmailService {
         return escaped.toString();
     }
 }
-    
